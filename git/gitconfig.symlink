@@ -5,8 +5,8 @@
 [hub]
         protocol = https
 [user]
-        name = Zach Holman
-        email = zach@zachholman.com
+        email = rcsorensen@gmail.com
+        name  = Ryan Sorensen
 [credential]
         helper = osxkeychain
 [alias]
@@ -23,8 +23,10 @@
 [core]
         excludesfile = ~/.gitignore
         editor = vim
+        whitespace = trailing-space,space-before-tab
+        autocrlf = input
 [apply]
-        whitespace = nowarn
+        whitespace = fix
 [mergetool]
         keepBackup = false
 [difftool]
