@@ -1,4 +1,17 @@
+filetype off                   " required by vundle!
+" Run: vim -u .vim/vundle.vim +BundleInstall +q
+runtime vundle.vim
+
 set noswapfile
+
+" ----------------------------------------------------------------------------
+"  Better Undo
+" ----------------------------------------------------------------------------
+set undofile
+set undodir=~/.vim/undodir,/tmp
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -61,18 +74,29 @@ set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
 
+let g:Powerline_symbols = "unicode" " Use fancy characters in the status bar
+
+" -- color theme
+set background=light
+let g:solarized_visibility="high"
+let g:solarized_contrast="high"
+colorscheme solarized
 
 " ----------------------------------------------------------------------------
 " Visual Cues
 " ----------------------------------------------------------------------------
 
-set showmatch              " brackets/braces that is
-set mat=5                  " duration to show matching brace (1/10 sec)
-set incsearch              " do incremental searching
-set laststatus=2           " always show the status line
-set ignorecase             " ignore case when searching
-set nohlsearch             " don't highlight searches
-set visualbell             " shut the fuck up
+set showmatch                       " brackets/braces that is
+set mat=5                           " duration to show matching brace (1/10 sec)
+set incsearch                       " do incremental searching
+set laststatus=2                    " always show the status line
+set ignorecase                      " ignore case when searching
+set hlsearch                        " don't highlight searches
+set visualbell                      " shut the fuck up
+set list listchars=tab:\ \ ,trail:· " Show invis characters
+set smartcase                       " if a pattern contains an uppercase
+                                    " letter, it is case sensitive, otherwise,
+                                    " it is not.
 
 
 " ---------------------------------------------------------------------------
@@ -83,3 +107,31 @@ function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
+
+" ---------------------------------------------------------------------------
+"  Filetype things
+" ---------------------------------------------------------------------------
+syntax on
+filetype plugin indent on
+
+" Make uses real tabs
+au FileType make set noexpandtab
+
+" Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+
+" md, markdown, and mk are markdown and define buffer-local preview
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
+
+" add json syntax highlighting
+au BufNewFile,BufRead *.json set ft=javascript
+
+" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+
+" Extra ruby
+au BufRead,BufNewFile *.rabl setf ruby
+
+" Enable syntastic syntax checking
+let g:syntastic_enable_signs=1
+let g:syntastic_quiet_warnings=1
