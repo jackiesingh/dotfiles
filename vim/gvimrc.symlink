@@ -1,7 +1,7 @@
-colorscheme desert
+colorscheme solarized
 set anti
 set lines=999 columns=84
-set guioptions=egmrt
+set guioptions=egmt
 
 " Command + t to :CommandT
 if has("gui_macvim")
@@ -30,3 +30,6 @@ nmap <d-6> 6gt
 nmap <d-7> 7gt
 nmap <d-8> 8gt
 nmap <d-9> 9gt
+
+set guifont=Monaco:h12
+

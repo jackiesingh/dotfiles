@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+gem 'crack'
+require 'crack'
+require 'json'
+
+puts JSON.pretty_generate(Crack::XML.parse(File.open(ARGV[0])))

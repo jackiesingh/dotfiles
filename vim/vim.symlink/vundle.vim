@@ -14,14 +14,22 @@ Bundle 'Conque-Shell'
 Bundle 'altercation/vim-colors-solarized'
 
 " Programming
+" indent guides
+Bundle 'Indent-Guides'
+
+" Commenting
+Bundle 'The-NERD-Commenter'
 
 " syntax checking on save
 Bundle 'Syntastic'
 
 " Per language
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-coffee-script'
 Bundle 'Vim-Rspec'
+Bundle 'VimClojure'
+Bundle 'jade.vim'
 
 Bundle 'groenewege/vim-less'
 
@@ -33,6 +41,7 @@ endif
 " Ruby support
 Bundle 'endwise.vim'
 
+
 " VCS support
 Bundle 'fugitive.vim'
 Bundle 'git.zip'
@@ -42,9 +51,15 @@ Bundle 'surround.vim'
 
 " Awesome search
 Bundle 'ack.vim'
+Bundle 'IndexedSearch'
 
 " Status line goodness
 Bundle 'Lokaltog/vim-powerline'
 
-Bundle 'VimClojure'
-Bundle 'jade.vim'
+" Completion
+Bundle 'neocomplcache'
+Bundle 'AutoTag'
+
+" Navigation
+Bundle 'AutoTag'
+Bundle 'Command-T'
