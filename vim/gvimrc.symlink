@@ -1,16 +1,13 @@
 colorscheme solarized
 set anti
-set lines=999 columns=84
+set lines=999 columns=140
 set guioptions=egmt
 
-" Command + t to :CommandT
+" Command + t to :Unite
 if has("gui_macvim")
   macmenu &File.New\ Tab key=<nop>
-  map <D-t> :CommandT<CR>
+  map <D-t> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr><c-u>
 endif
-
-" Open Command+T in a new tab
-let g:CommandTAcceptSelectionTabMap='<CR>'
 
 " C-TAB and C-SHIFT-TAB cycle tabs forward and backward
 nmap <c-tab> :tabnext<cr>
@@ -32,4 +29,3 @@ nmap <d-8> 8gt
 nmap <d-9> 9gt
 
 set guifont=Monaco:h12
-
